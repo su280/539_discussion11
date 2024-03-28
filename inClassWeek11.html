@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Discussion</title>
+    <style>
+        p {
+            background-color: #b3b3b3;
+            border: 3px solid #FFFFFF;
+            padding: 3%;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function displayInformation() {
+            document.querySelector('h1').textContent = "Suhaib Abdulhay";
+
+            document.getElementById('URL').textContent = window.location.href;
+            document.getElementById('items').textContent = document.getElementsByTagName('li').length;
+            document.getElementById('time').textContent = new Date().toLocaleString();
+        }
+
+        function stylePage() {
+            document.body.style.backgroundColor = '#e6e6e6';
+            document.body.style.margin = '20px';
+        }
+        function copyFunction(event) {
+            const copiedText = event.clipboardData.getData('text');
+            const cheerDiv = document.getElementById('cheer');
+            if (copiedText.includes('University of Michigan')) {
+                event.preventDefault();
+                const cheerText = "Go Blue";
+                const cheerLines = cheerText.split('\n');
+                cheerLines.forEach(line => {
+                    const cheerLine = document.createElement('div');
+                    cheerLine.textContent = line;
+                    cheerDiv.appendChild(cheerLine);
+                });
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+<h1>Your name goes here</h1>
+<h2>Use JavaScript to display the following information :</h2>
+<p>
+    URL of this page : <span id="URL"></span><br/>
+    Number of list items on this page: <span id="items"></span><br/>
+    Current date/time : <span id="time"></span><br/>
+</p>
+<button type="button" onClick="displayInformation()">Display Information!</button>
+<button type="button" onClick="stylePage()">Style the Page</button>
+
+<ol>
+    <li>Ohio</li>
+    <li>Pennsylvania</li>
+    <li>New York</li>
+    <li>California</li>
+    <li>Michigan</li>
+</ol>
+<ul>
+    <li>Kent State</li>
+    <li>University of Pittsburgh</li>
+    <li>NYU</li>
+    <li>California State University Long Beach</li>
+    <li oncopy="copyFunction(event)">University of Michigan</li>
+</ul>
+<div id="cheer"></div>
+
+</body>
+</html>
